@@ -21,12 +21,26 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
-
+    <style>
+        .error {font-size: 13px; color: red; font-weight: bold;}
+    </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+        @if (Session::get('success'))
+        <div class="alert alert-success alert-dismissible text-white mt-3" role="alert">
+            <span class="text-sm">{{ Session::get('success') }}</span>
+        </div>
+    @endif
+
+    @if (Session::get('error'))
+        <div class="alert alert-danger alert-dismissible text-white mt-3" role="alert">
+            <span class="text-sm">{{ Session::get('error') }}</span>
+        </div>
+    @endif
 
         @yield('content')
         <footer class="footer py-4  ">

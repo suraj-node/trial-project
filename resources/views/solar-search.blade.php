@@ -18,19 +18,6 @@
             </span>
         </div>
     @endif
-
-    @if (Session::get('success'))
-        <div class="alert alert-success alert-dismissible text-white mt-3" role="alert">
-            <span class="text-sm">{{ Session::get('success') }}</span>
-        </div>
-    @endif
-
-    @if (Session::get('error'))
-        <div class="alert alert-danger alert-dismissible text-white mt-3" role="alert">
-            <span class="text-sm">{{ Session::get('error') }}</span>
-        </div>
-    @endif
-
 </div>
 
 <form method="get" action="{{ $search_url }}" enctype="application/x-www-form-urlencoded">

@@ -6,7 +6,7 @@
     @include('solar-search', [
         'search_url' => url('/'),
         'back_url' => url('/'),
-        'placeholder_search' => 'Search...',
+        'placeholder_search' => 'Search by property type, bedrooms, sale/rent price',
     ])
     <!-- End Navbar -->
     <div class="container-fluid py-4">
@@ -137,7 +137,7 @@
                                                 <td>
                                                     <a href="{{ route('remove', ['propId' => $record->id]) }}"><i
                                                             class="fa fa-trash text-danger"></i></a>
-                                                    <a href=""><i class="fa fa-edit text-info"></i></a>
+                                                    <a href="{{ route('edit-view', ['propId'=>base64_encode($record->id)]) }}"><i class="fa fa-edit text-info"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

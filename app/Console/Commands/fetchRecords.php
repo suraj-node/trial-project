@@ -41,7 +41,7 @@ class fetchRecords extends Command
     public function handle($page = 1)
     {
         try {
-
+            $propertyRepo = resolve(PropetyRepository::class);
             $propertyRecords = GuzzleService::initiate($page);
 
         if(!isset($propertyRecords['data']) || count($propertyRecords['data']) == 0) {

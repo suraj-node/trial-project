@@ -17,6 +17,11 @@ class PropetyRepository
         return PropertyData::where('property_uuid', $uuid);
     }
 
+    public function getById(string $id)
+    {
+        return PropertyData::where('id', $id)->first();
+    }
+
     public function getLatestOne(): PropertyData
     {
         return PropertyData::latest()->first();
@@ -30,5 +35,10 @@ class PropetyRepository
     public function remove(int $propId)
     {
         return PropertyData::where('id', $propId)->delete();
+    }
+
+    public function update(array $data)
+    {
+        return PropertyData::where('id', $data['id'])->update($data);
     }
 }
