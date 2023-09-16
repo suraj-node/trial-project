@@ -20,7 +20,7 @@ On edit page same data will be displayed for update also the image preview to mo
 I'm not using any login credential here so anyone who will use this project can run the command and without logging the user can display the records in table form 
 
 Steps to follow:
-1. Clone the project
+1. Clone the project and checkout the master branch
 2. Create .env file and update the database fields
 3. Run php artisan key:generate (Optional)
 4. Run Composoer install to install required libraries
