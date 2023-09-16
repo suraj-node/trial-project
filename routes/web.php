@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('base');
-});
+
+Route::get('/', ['uses'=>'MainController@index', 'as'=>'home']);
+Route::get('/remove-entry/{propId}', ['uses'=>'MainController@remove', 'as'=>'remove']);

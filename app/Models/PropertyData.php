@@ -28,4 +28,5 @@ class PropertyData extends Model
                             'if_updated',
                             'page_number'
                           ];
+
 }

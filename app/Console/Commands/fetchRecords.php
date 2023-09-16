@@ -41,17 +41,10 @@ class fetchRecords extends Command
     public function handle($page = 1)
     {
         try {
-            //PROCESS TO RESUME FROM THE LAST ENTRY
-            $propertyRepo = resolve(PropetyRepository::class);
-            $getLatest = $propertyRepo->getLatestOne();
-            if($getLatest) {
-                $page = $getLatest->page_number;
-            }
-            //FINISH
 
             $propertyRecords = GuzzleService::initiate($page);
 
-        if(!isset($propertyRecords['data']) || $propertyRecords['data'] == 0) {
+        if(!isset($propertyRecords['data']) || count($propertyRecords['data']) == 0) {
             error_log("No records found to create");
             exit;
         }
@@ -65,6 +58,7 @@ class fetchRecords extends Command
 
         foreach($propertyRecords['data'] as $record)
         {
+            //Preparing the data set for storing into database
             $data = [
                 'property_uuid'         => $record['uuid'],
                 'county'                => $record['county'],
@@ -95,7 +89,7 @@ class fetchRecords extends Command
         }
 
         $progressBar->finish();
-        $this->handle($page);
+        $this->handle($page); // calling recursively same function untill the laste page
         return 0;
 
         }catch(Exception $e) {

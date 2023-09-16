@@ -21,4 +21,14 @@ class PropetyRepository
     {
         return PropertyData::latest()->first();
     }
+
+    public function getAllRecords()
+    {
+        return PropertyData::orderBy('id', 'DESC');
+    }
+
+    public function remove(int $propId)
+    {
+        return PropertyData::where('id', $propId)->delete();
+    }
 }
